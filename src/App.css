@@ -9,7 +9,7 @@ iframe {
 }
 
 .head {
-  height: 5vh;
+  height: calc(1.5em + 20px);
   text-align: center;
   font-size: larger;
   padding: 10px;
@@ -39,7 +39,7 @@ button.save-button {
 }
 
 .container { width: 100%;}
-.editor-container{ flex: 1; height: 95vh; border-right: black solid; }
+.editor-container{ flex: 1; height: calc(100vh - 1.5em - 25px); border-right: black solid; }
 .output-container{flex: 1;}
 
 @media (max-width: 768px) {
