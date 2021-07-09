@@ -38,8 +38,8 @@ button.save-button {
   color: #EDEDED;
 }
 
-
-.editor-container{ flex: 1; height: 95vh }
+.container { width: 100%;}
+.editor-container{ flex: 1; height: 95vh; border-right: black solid; }
 .output-container{flex: 1;}
 
 @media (max-width: 768px) {
@@ -59,6 +59,7 @@ button.save-button {
   }
   .editor-container, .output-container{
     flex: unset;
+    border-right: unset;
   }
   .output-container{
     height: 100vh;
