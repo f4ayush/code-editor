@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+import { useState } from 'react'
 import './App.css';
+import Home from './components/Home'
+import Head from './components/Head';
+
 
 function App() {
+
+  const [code, setcode] = useState("")
+  const [mode, setmode] = useState('github')
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Head setmode={setmode} mode={mode} code={code} />
+      <Home setcode={setcode} mode={mode} code={code} />
     </div>
   );
 }
