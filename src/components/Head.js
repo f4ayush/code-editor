@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, useLocation, Link } from 'react-router-dom';
+import { save } from "../api/index.js";
 import decode from 'jwt-decode';
 export default function Head({ mode, setmode, code }) {
     const history = useHistory()
@@ -38,12 +39,25 @@ export default function Head({ mode, setmode, code }) {
             element.click();
         }
     }
+    const Save = async () =>{
+        if(user !== null && user){
+            console.log(code)
+            try {
+                const userId = user?.data?.result?._id
+                await save({userId, code})
+            } catch (error) {
+                console.log(error)
+            }
+        }else{
+            history.push('/login')
+        }
+    }
     return (
         <div className="head">
             <div className="head-buttons">
                 <button className='mode-button' style={{ background: mode === 'github' ? 'black' : 'white', color: mode !== 'github' ? 'black' : 'white' }} onClick={handleClick}>mode</button>
                 <button className='save-button' onClick={TextFile}>Download</button>
-                <button className='save-button' onClick={TextFile}>Save</button>
+                <button className='save-button' onClick={Save}>Save</button>
             </div>
             <Link to="/"><h2>Front End Editor</h2></Link>
             <div className="auth-buttons">

@@ -22,6 +22,7 @@ export default function Editor({ setcode, mode }) {
                 theme={mode}
                 placeholder="Start coding.........."
                 onChange={onChange}
+                defaultValue={"aaaaa"}
                 name="UNIQUE_ID_OF_DIV"
                 height="95%"
                 width="100%"
