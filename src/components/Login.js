@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { signIn, signUp } from "../api/index";
+import "./login.css";
 
 export default function Login() {
     const [userDetails, setuserDetails] = useState({ name: "", email: "", password: "" })

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation, Link } from 'react-router-dom';
 import decode from 'jwt-decode';
 export default function Head({ mode, setmode, code }) {
     const history = useHistory()
@@ -45,7 +45,7 @@ export default function Head({ mode, setmode, code }) {
                 <button className='save-button' onClick={TextFile}>Download</button>
                 <button className='save-button' onClick={TextFile}>Save</button>
             </div>
-            <h2>Front End Editor</h2>
+            <Link to="/"><h2>Front End Editor</h2></Link>
             <div className="auth-buttons">
                 {user !== null && user ? <button className="mode-button" onClick={logout}>Log Out</button> : <button className="mode-button" onClick={() => { history.push('/login') }}>Login</button>}
             </div>
