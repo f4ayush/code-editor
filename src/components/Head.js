@@ -1,6 +1,29 @@
-import React from 'react'
-
+import React, { useState, useEffect } from 'react'
+import { useHistory, useLocation } from 'react-router-dom';
+import decode from 'jwt-decode';
 export default function Head({ mode, setmode, code }) {
+    const history = useHistory()
+    const location = useLocation();
+    const [isLogged, setisLogged] = useState(false)
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('codeUser')));
+    const logout = () => {
+        localStorage.clear();
+        setUser(null);
+    };
+
+    useEffect(() => {
+        const token = user?.token;
+
+        if (token) {
+            const decodedToken = decode(token);
+
+            if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+        }
+
+        setUser(JSON.parse(localStorage.getItem('codeUser')));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [location]);
+
     const handleClick = () => {
         const newMode = mode === 'github' ? 'monokai' : 'github'
         setmode(newMode)
@@ -19,9 +42,13 @@ export default function Head({ mode, setmode, code }) {
         <div className="head">
             <div className="head-buttons">
                 <button className='mode-button' style={{ background: mode === 'github' ? 'black' : 'white', color: mode !== 'github' ? 'black' : 'white' }} onClick={handleClick}>mode</button>
+                <button className='save-button' onClick={TextFile}>Download</button>
                 <button className='save-button' onClick={TextFile}>Save</button>
             </div>
             <h2>Front End Editor</h2>
+            <div className="auth-buttons">
+                {user !== null && user ? <button className="mode-button" onClick={logout}>Log Out</button> : <button className="mode-button" onClick={() => { history.push('/login') }}>Login</button>}
+            </div>
         </div>
     )
 }

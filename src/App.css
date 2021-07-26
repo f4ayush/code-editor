@@ -12,14 +12,13 @@ iframe {
   height: calc(1.5em + 20px);
   text-align: center;
   font-size: larger;
+  display: flex;
+  justify-content: space-between;
   padding: 10px;
   font-weight: 600;
   background-color: #EDEDED;
 }
 
-.head-buttons{
-  float: left;
-}
 
 button.mode-button {
   margin-left: 5px;
