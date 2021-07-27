@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { signIn, signUp } from "../api/index";
 import "./login.css";
 
-export default function Login() {
+export default function Login({ setuserId }) {
     const [userDetails, setuserDetails] = useState({ name: "", email: "", password: "" })
     const [isSignup, setisSignup] = useState(false)
     const history = useHistory()
@@ -11,6 +11,7 @@ export default function Login() {
         try {
             const { data } = await signUp(userDetails)
             localStorage.setItem('codeUser', JSON.stringify({ data }))
+            setuserId(data.result._id)
             history.push('/')
         } catch (error) {
             console.log(error)
@@ -20,6 +21,7 @@ export default function Login() {
         try {
             const { data } = await signIn(userDetails)
             localStorage.setItem('codeUser', JSON.stringify({ data }))
+            setuserId(data.result._id)
             history.push('/')
         } catch (error) {
             console.log(error)

@@ -6,7 +6,7 @@ import "ace-builds/src-noconflict/theme-github";
 import "ace-builds/src-noconflict/ext-language_tools"
 
 
-export default function Editor({ setcode, mode }) {
+export default function Editor({ setcode, mode, code }) {
     const [value, setvalue] = useState('')
     const handleClick = () => {
         setcode(value)
@@ -20,9 +20,9 @@ export default function Editor({ setcode, mode }) {
             <AceEditor
                 mode="html"
                 theme={mode}
-                placeholder="Start coding.........."
+                // placeholder="Start coding.........."
                 onChange={onChange}
-                defaultValue={"aaaaa"}
+                defaultValue={code}
                 name="UNIQUE_ID_OF_DIV"
                 height="95%"
                 width="100%"

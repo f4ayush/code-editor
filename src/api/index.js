@@ -12,4 +12,4 @@ API.interceptors.request.use((req) => {
 export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);
 export const save = (code) => API.post('/save', code);
-export const getCode = (code) => API.post('/getCode', code);
+export const getCode = (userId) => API.post('/getCode', {userId});
