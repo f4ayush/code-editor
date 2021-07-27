@@ -39,16 +39,17 @@ export default function Head({ mode, setmode, code }) {
             element.click();
         }
     }
-    const Save = async () =>{
-        if(user !== null && user){
+    const Save = async () => {
+        if (user !== null && user) {
             console.log(code)
             try {
                 const userId = user?.data?.result?._id
-                await save({userId, code})
+                await save({ userId, code })
+                alert("Code saved Successfully.")
             } catch (error) {
                 console.log(error)
             }
-        }else{
+        } else {
             history.push('/login')
         }
     }
